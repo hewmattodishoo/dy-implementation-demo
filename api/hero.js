@@ -56,7 +56,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
+        "DY-API-KEY": process.env.DY_API_KEY,
       },
       body: JSON.stringify(payload),
     });

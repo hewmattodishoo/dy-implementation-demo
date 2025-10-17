@@ -1,1 +1,9 @@
-.vercel
+# Ignore local environment files
+.env
+.env.local
+
+# System files
+.DS_Store
+
+# Node
+node_modules/

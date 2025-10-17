@@ -74,21 +74,48 @@
   </footer>
 
   <script>
-  async function loadHero() {
-    try {
-      const res = await fetch('/api/hero');
-      const data = await res.json();
-      console.log('API response:', data);
+async function loadHero() {
+  try {
+    const res = await fetch('/api/hero');
+    const data = await res.json();
+    console.log('DY API response:', data);
 
-      // Example: update your hero text
-      const heroTitle = document.querySelector('.hero-copy h1');
-      if (heroTitle) heroTitle.textContent = data.message;
-    } catch (err) {
-      console.error('Error fetching hero API:', err);
+    const choice = data?.choices?.[0];
+    const variation = choice?.variations?.[0];
+    const payload = variation?.payload?.data;
+
+    if (!payload) {
+      console.warn("No payload found in DY response");
+      return;
     }
-  }
 
-  loadHero();
+    // Get elements
+    const heroSection = document.querySelector('#hero');
+    const heroImg = heroSection.querySelector('.hero-img');
+    const heroTitle = heroSection.querySelector('.hero-copy h1');
+    const heroSubtitle = heroSection.querySelector('.hero-copy p');
+    const heroBtn = heroSection.querySelector('.hero-copy .btn');
+
+    // Remove skeleton loaders
+    heroImg.classList.remove('skeleton');
+    heroTitle.classList.remove('skeleton-text');
+    heroSubtitle.classList.remove('skeleton-text');
+    heroBtn.classList.remove('skeleton-text');
+
+    // Apply DY content
+    heroImg.style.backgroundImage = `url(${payload.image})`;
+    heroImg.style.backgroundSize = 'cover';
+    heroImg.style.backgroundPosition = 'center';
+    heroTitle.textContent = payload.title || '';
+    heroSubtitle.textContent = payload.subtitle || '';
+    heroBtn.textContent = payload.cta || '';
+    heroBtn.href = payload.link || '#';
+  } catch (err) {
+    console.error('Error fetching hero API:', err);
+  }
+}
+
+loadHero();
 </script>
 </body>
 

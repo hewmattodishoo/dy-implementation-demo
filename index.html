@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DY Demo Store</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Dynamic Yield client-side tag -->
+  <link rel="preconnect" href="//cdn.dynamicyield.com">
+  <link rel="preconnect" href="//st.dynamicyield.com">
+  <link rel="preconnect" href="//rcom.dynamicyield.com">
+  <script type="text/javascript">
+    window.DY = window.DY || {};
+    DY.recommendationContext = { type: 'HOMEPAGE' };
+  </script>
+  <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
+  <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">DY Demo Store</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero section populated by API -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <div class="hero-img skeleton"></div>
+      <div class="hero-copy">
+        <h1 class="skeleton-text" style="width: 60%"></h1>
+        <p class="skeleton-text" style="width: 80%"></p>
+        <div class="btn skeleton-text" style="width: 120px; height: 40px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recommendations">
+    <h2>Recommended for You</h2>
+    <div id="rec-slider" class="rec-slider"></div>
+  </section>
+
+  <section class="recommendations">
+    <h2>Trending Products</h2>
+    <div id="rec-trending" class="rec-slider"></div>
+  </section>
+
+  <section class="recommendations">
+    <h2>New Arrivals</h2>
+    <div id="rec-new" class="rec-slider"></div>
+  </section>
+
+  <section class="recommendations">
+    <h2>Recently Viewed</h2>
+    <div id="rec-recent" class="rec-slider"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 DY Demo Store. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+  async function loadHero() {
+    try {
+      const res = await fetch('/api/hero');
+      const data = await res.json();
+      console.log('API response:', data);
+
+      // Example: update your hero text
+      const heroTitle = document.querySelector('.hero-copy h1');
+      if (heroTitle) heroTitle.textContent = data.message;
+    } catch (err) {
+      console.error('Error fetching hero API:', err);
+    }
+  }
+
+  loadHero();
+</script>
+</body>
+
+</html>

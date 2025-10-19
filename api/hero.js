@@ -2,29 +2,20 @@ export default async function handler(req, res) {
   console.log("Incoming /api/hero request...");
 
   const apiKey = process.env.DY_API_KEY;
-  console.log("DY_API_KEY starts with:", apiKey?.slice(0, 6));
-  console.log("DY_API_KEY length:", apiKey?.length);
-
   if (!apiKey) {
-    console.error("Missing DY_API_KEY in environment variables.");
     return res.status(500).json({ error: "Missing DY_API_KEY in environment." });
   }
 
   try {
-    // Receive DYID from client if provided
     const { dyid } = req.body || {};
-    console.log("Received DYID from client:", dyid || "none");
 
-    // Build the payload (unchanged except dyid inserted if provided)
     const payload = {
       user: {
         active_consent_accepted: false,
         dyid: dyid || "",
         dyid_server: "",
       },
-      session: {
-        dy: "",
-      },
+      session: { dy: "" },
       context: {
         page: {
           type: "HOMEPAGE",
@@ -32,18 +23,10 @@ export default async function handler(req, res) {
           location: "https://sugoi-ne.com/men-pants/p7383723-010",
           referrer: "https://sugoi-ne.com/men-pants",
           locale: "en_US",
-        },
-        device: {
-          userAgent:
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
-          ip: "54.100.200.255",
-        },
-        pageAttributes: {
-          customPageAttribute: "someValue",
-        },
+        }
       },
       selector: {
-        names: ["HP Banner"],
+        names: ["HP Banner", "API-recs"],
       },
       options: {
         isImplicitPageview: false,
@@ -52,8 +35,6 @@ export default async function handler(req, res) {
         isImplicitClientData: false,
       },
     };
-
-    console.log("Sending request to DY API...");
 
     const response = await fetch("https://dy-api.com/v2/serve/user/choose", {
       method: "POST",
@@ -64,18 +45,9 @@ export default async function handler(req, res) {
       body: JSON.stringify(payload),
     });
 
-    console.log("DY API response status:", response.status);
-
-    if (response.status === 401) {
-      const errText = await response.text();
-      console.error("DY API returned 401 Unauthorized. Body:", errText);
-      return res.status(401).json({ error: "Unauthorized from DY API" });
-    }
-
     const data = await response.json();
-    console.log("DY API success. Choices length:", data?.choices?.length);
-
     return res.status(200).json(data);
+
   } catch (error) {
     console.error("Error calling Dynamic Yield API:", error);
     return res.status(500).json({ error: "Failed to fetch from Dynamic Yield API" });

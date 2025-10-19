@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DY Demo Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="./styles.css" />
 
   <!-- Dynamic Yield client-side tag -->
@@ -74,60 +75,67 @@
   </footer>
 
   <script>
-    async function loadHero() {
-      try {
-        // Get stored DYID from localStorage
-        const storedDyid = localStorage.getItem('DYID');
+  async function loadHero() {
+    try {
+      const storedDyid = localStorage.getItem("DYID");
 
-        // Call your API route and send DYID if it exists
-        const res = await fetch('/api/hero', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dyid: storedDyid }),
-        });
+      const res = await fetch("/api/hero", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dyid: storedDyid }),
+      });
 
-        const data = await res.json();
-        console.log('DY API response:', data);
+      const data = await res.json();
+      console.log("DY API response:", data);
 
-        // Store DYID returned from Dynamic Yield (if present)
-        const dyid = data?.cookies?.find(c => c.name === '_dyid_server')?.value;
-        if (dyid) {
-          localStorage.setItem('DYID', dyid);
-          console.log('Stored DYID:', dyid);
-        }
+      const dyid = data?.cookies?.find(c => c.name === "_dyid_server")?.value;
+      if (dyid) localStorage.setItem("DYID", dyid);
 
-        // Extract banner payload
-        const choice = data?.choices?.[0];
-        const variation = choice?.variations?.[0];
-        const payload = variation?.payload?.data;
-        if (!payload) return;
+      // ============ HERO ============
+      const bannerChoice = data.choices.find(c => c.name === "HP Banner");
+      const payload = bannerChoice.variations[0].payload.data;
 
-        // Render hero section
-        const heroSection = document.querySelector('#hero');
-        const heroImg = heroSection.querySelector('.hero-img');
-        const heroTitle = heroSection.querySelector('.hero-copy h1');
-        const heroSubtitle = heroSection.querySelector('.hero-copy p');
-        const heroBtn = heroSection.querySelector('.hero-copy .btn');
+      const heroSection = document.querySelector("#hero");
+      const heroImg = heroSection.querySelector(".hero-img");
+      const heroTitle = heroSection.querySelector(".hero-copy h1");
+      const heroSubtitle = heroSection.querySelector(".hero-copy p");
+      const heroBtn = heroSection.querySelector(".hero-copy .btn");
 
-        heroImg.classList.remove('skeleton');
-        heroTitle.classList.remove('skeleton-text');
-        heroSubtitle.classList.remove('skeleton-text');
-        heroBtn.classList.remove('skeleton-text');
+      heroImg.classList.remove("skeleton");
+      heroTitle.classList.remove("skeleton-text");
+      heroSubtitle.classList.remove("skeleton-text");
+      heroBtn.classList.remove("skeleton-text");
 
-        heroImg.style.backgroundImage = `url(${payload.image})`;
-        heroImg.style.backgroundSize = 'cover';
-        heroImg.style.backgroundPosition = 'center';
-        heroTitle.textContent = payload.title || '';
-        heroSubtitle.textContent = payload.subtitle || '';
-        heroBtn.textContent = payload.cta || '';
-        heroBtn.href = payload.link || '#';
-      } catch (err) {
-        console.error('Error fetching hero API:', err);
-      }
+      heroImg.style.backgroundImage = `url(${payload.image})`;
+      heroTitle.textContent = payload.title;
+      heroSubtitle.textContent = payload.subtitle;
+      heroBtn.textContent = payload.cta;
+      heroBtn.href = payload.link || "#";
+
+      // ============ RECOMMENDATIONS ============
+      const recsChoice = data.choices.find(c => c.name === "API-recs");
+      const slots = (recsChoice.variations[0].payload.data.slots || []).slice(0, 4);
+
+      const recContainer = document.querySelector("#rec-slider");
+      recContainer.innerHTML = slots.map(slot => {
+        const p = slot.productData;
+        return `
+          <div class="item">
+            <img src="${p.image_url}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p class="price">${p.dy_display_price || p.price} €</p>
+            <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+          </div>
+        `;
+      }).join("");
+
+    } catch (err) {
+      console.error("Error in loadHero():", err);
     }
+  }
 
-    loadHero();
-  </script>
+  loadHero();
+</script>
 </body>
 
 </html>

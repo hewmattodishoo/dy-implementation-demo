@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart – DY Demo Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/styles.css" />
+
+    <!-- Dynamic Yield page context -->
+    <script>
+        window.DY = window.DY || {};
+        DY.recommendationContext = { type: 'CART' };
+    </script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">DY Demo Store</div>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/plp.html">Shop</a>
+            <a class="active" href="/cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <h1>Your Shopping Cart</h1>
+
+        <div class="cart-container">
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img src="..." />
+                    <div class="cart-item-info">
+                        <h3>Product Name</h3>
+                        <p class="price">199 €</p>
+                        <div class="qty-row">
+                            <span>Qty: 1</span>
+                            <button class="remove-btn">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                <p><strong>Subtotal:</strong> <span>199 €</span></p>
+                <button class="btn primary">Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 DY Demo Store. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

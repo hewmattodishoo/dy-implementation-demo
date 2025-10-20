@@ -3,7 +3,7 @@
     { "source": "/", "destination": "/pages/index.html" },
     { "source": "/cart", "destination": "/pages/cart.html" },
     { "source": "/cart/", "destination": "/pages/cart.html" },
-    { "source": "/plp", "destination": "/pages/plp.html" },
+    { "source": "/category", "destination": "/pages/categoryPage.html" },
     { "source": "/plp/", "destination": "/pages/plp.html" }
   ]
 }

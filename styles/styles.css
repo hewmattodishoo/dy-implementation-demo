@@ -425,3 +425,25 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* --- Navbar Search --- */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+#search-input {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  outline: none;
+  width: 160px;
+  transition: all 0.2s ease;
+}
+
+#search-input:focus {
+  width: 220px;
+  border-color: #333;
+}

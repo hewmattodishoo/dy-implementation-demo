@@ -6,28 +6,20 @@
   font-family: "Inter", Arial, sans-serif;
 }
 
-/* Global variables */
-:root {
-  --color-primary: #007aff;
-  --color-primary-dark: #005fcc;
-  --color-text: #222;
-  --color-text-light: #555;
-  --radius: 12px;
-}
-
-/* Skeleton loader */
-.skeleton,
-.skeleton-text {
+/* Skeleton loader styles */
+.skeleton {
   background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.4s infinite;
+  border-radius: 8px;
 }
-.skeleton {
-  border-radius: var(--radius);
-}
+
 .skeleton-text {
   height: 18px;
   margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s infinite;
   border-radius: 4px;
 }
 

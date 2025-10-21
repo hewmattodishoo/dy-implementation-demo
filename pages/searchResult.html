@@ -21,10 +21,14 @@
 <header class="navbar">
     <div class="logo">DY Demo Store</div>
     <nav>
-        <a href="/cart">Cart</a>
-        <a href="/plp">Shop</a>
+      <a href="/pages/cart.html">Cart</a>
+      <a href="/pages/categoryPage.html">Shop</a>
+      <div class="search-wrapper">
+        <input id="search-input" type="text" placeholder="Search products..." />
+        <div id="autocomplete" class="autocomplete-list"></div>
+      </div>
     </nav>
-</header>
+  </header>
 
 <section id="category-grid" class="category-grid"></section>
 
@@ -37,38 +41,9 @@
     </div>
 </template>
 
-<script>
-    const grid = document.getElementById("category-grid");
-    const storedResults = localStorage.getItem("SEARCH_RESULTS");
 
-    if (!storedResults) {
-        grid.innerHTML = "<p>No results found.</p>";
-    } else {
-        const data = JSON.parse(storedResults);
 
-        // Extract product list (DY Semantic Search structure)
-        const slots =
-            data?.choices?.[0]?.variations?.[0]?.payload?.data?.slots || [];
 
-        if (!slots.length) {
-            grid.innerHTML = "<p>No results found.</p>";
-        } else {
-            grid.innerHTML = slots
-                .map((slot) => {
-                    const p = slot.productData; // ✅ extract product data
-                    return `
-                    <div class="product-card">
-                        <img src="${p.image_url}" alt="${p.name}" class="product-img" />
-                        <h3>${p.name}</h3>
-                        <p class="price">${p.dy_display_price || p.price} €</p>
-                        <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-                    </div>
-                `;
-                })
-                .join("");
-        }
-    }
-</script>
 <footer class="footer">
     <div class="footer-content">
         <p>© 2025 DY Demo Store. All rights reserved.</p>
@@ -79,6 +54,6 @@
         </nav>
     </div>
 </footer>
-
+ <script src="/js/searchResult.js" defer></script>
 </body>
 </html>

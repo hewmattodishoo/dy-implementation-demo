@@ -17,73 +17,68 @@
     <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
 </head>
 
+<body>
 <header class="navbar">
     <div class="logo">DY Demo Store</div>
     <nav>
-      <a href="/cart">Cart</a>
-      <a href="/plp">Shop</a>
+        <a href="/cart">Cart</a>
+        <a href="/plp">Shop</a>
     </nav>
-  </header>
+</header>
 
-
-<body>
-   <section id="category-grid" class="category-grid"></section>
+<section id="category-grid" class="category-grid"></section>
 
 <template id="product-skeleton">
-  <div class="product-card">
-    <div class="skeleton product-img"></div>
-    <div class="skeleton-text" style="width: 90%;"></div>
-    <div class="skeleton-text" style="width: 60%;"></div>
-    <div class="skeleton skeleton-btn"></div>
-  </div>
+    <div class="product-card">
+        <div class="skeleton product-img"></div>
+        <div class="skeleton-text" style="width: 90%;"></div>
+        <div class="skeleton-text" style="width: 60%;"></div>
+        <div class="skeleton skeleton-btn"></div>
+    </div>
 </template>
 
 <script>
-  const grid = document.getElementById("category-grid");
-  const storedResults = localStorage.getItem("SEARCH_RESULTS");
+    const grid = document.getElementById("category-grid");
+    const storedResults = localStorage.getItem("SEARCH_RESULTS");
 
-  if (!storedResults) {
-    grid.innerHTML = "<p>No results found.</p>";
-  } else {
-    const data = JSON.parse(storedResults);
-
-    // Extract product list (DY Semantic Search structure)
-    const slots =
-      data?.choices?.[0]?.variations?.[0]?.payload?.data?.slots || [];
-
-    if (!slots.length) {
-      grid.innerHTML = "<p>No results found.</p>";
+    if (!storedResults) {
+        grid.innerHTML = "<p>No results found.</p>";
     } else {
-      grid.innerHTML = slots
-        .map(
-          (p) => `
-          <div class="product-card">
-            <img src="${p.image_url}" alt="${p.name}" class="product-img" />
-            <h3>${p.name}</h3>
-            <p class="price">${p.dy_display_price || p.price} €</p>
-            <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-          </div>
-        `
-        )
-        .join("");
+        const data = JSON.parse(storedResults);
+
+        // Extract product list (DY Semantic Search structure)
+        const slots =
+            data?.choices?.[0]?.variations?.[0]?.payload?.data?.slots || [];
+
+        if (!slots.length) {
+            grid.innerHTML = "<p>No results found.</p>";
+        } else {
+            grid.innerHTML = slots
+                .map((slot) => {
+                    const p = slot.productData; // ✅ extract product data
+                    return `
+                    <div class="product-card">
+                        <img src="${p.image_url}" alt="${p.name}" class="product-img" />
+                        <h3>${p.name}</h3>
+                        <p class="price">${p.dy_display_price || p.price} €</p>
+                        <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                    </div>
+                `;
+                })
+                .join("");
+        }
     }
-  }
 </script>
+<footer class="footer">
+    <div class="footer-content">
+        <p>© 2025 DY Demo Store. All rights reserved.</p>
+        <nav class="footer-nav">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Support</a>
+        </nav>
+    </div>
+</footer>
 
 </body>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2025 DY Demo Store. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Support</a>
-            </nav>
-        </div>
-    </footer>
-
-
-</body>
-
 </html>

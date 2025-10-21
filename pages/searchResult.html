@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/styles.css" />
+
+    <!-- Dynamic Yield page context -->
+    <script>
+        window.DY = window.DY || {};
+        DY.recommendationContext = { type: 'CART' };
+    </script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
+</head>
+
+<header class="navbar">
+    <div class="logo">DY Demo Store</div>
+    <nav>
+      <a href="/cart">Cart</a>
+      <a href="/plp">Shop</a>
+    </nav>
+  </header>
+
+
+<body>
+   <section id="category-grid" class="category-grid"></section>
+
+<template id="product-skeleton">
+  <div class="product-card">
+    <div class="skeleton product-img"></div>
+    <div class="skeleton-text" style="width: 90%;"></div>
+    <div class="skeleton-text" style="width: 60%;"></div>
+    <div class="skeleton skeleton-btn"></div>
+  </div>
+</template>
+
+<script>
+  const grid = document.getElementById("category-grid");
+  const storedResults = localStorage.getItem("SEARCH_RESULTS");
+
+  if (!storedResults) {
+    grid.innerHTML = "<p>No results found.</p>";
+  } else {
+    const data = JSON.parse(storedResults);
+
+    // Extract product list (DY Semantic Search structure)
+    const products =
+      data?.choices?.[0]?.variations?.[0]?.payload?.data?.products || [];
+
+    if (!products.length) {
+      grid.innerHTML = "<p>No results found.</p>";
+    } else {
+      grid.innerHTML = products
+        .map(
+          (p) => `
+          <div class="product-card">
+            <img src="${p.image_url}" alt="${p.name}" class="product-img" />
+            <h3>${p.name}</h3>
+            <p class="price">${p.dy_display_price || p.price} €</p>
+            <button class="add-btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+          </div>
+        `
+        )
+        .join("");
+    }
+  }
+</script>
+
+</body>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 DY Demo Store. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

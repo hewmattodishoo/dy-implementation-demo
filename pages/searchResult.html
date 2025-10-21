@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
     <!-- Dynamic Yield page context -->
     <script>
         window.DY = window.DY || {};
-        DY.recommendationContext = { type: 'CART' };
+        DY.recommendationContext = { type: 'CATEGORY' };
     </script>
     <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
     <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
@@ -38,7 +38,42 @@
         </div>
     </div>
 
-    <section id="category-grid" class="category-grid"></section>
+    <aside class="facets-menu">
+        <h3>Filter By</h3>
+
+        <!-- Category Filter -->
+        <div class="facet">
+            <h4>Category</h4>
+            <ul>
+                <li><label><input type="checkbox" value="bike"> Bike</label></li>
+                <li><label><input type="checkbox" value="travel"> Travel</label></li>
+                <li><label><input type="checkbox" value="accessories"> Accessories</label></li>
+            </ul>
+        </div>
+
+        <!-- Price Filter -->
+        <div class="facet">
+            <h4>Price</h4>
+            <div class="price-inputs">
+                <input type="number" id="min-price" placeholder="Min" />
+                <input type="number" id="max-price" placeholder="Max" />
+            </div>
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="facet">
+            <h4>Brand</h4>
+            <ul>
+                <li><label><input type="checkbox" value="thule"> Thule</label></li>
+                <li><label><input type="checkbox" value="yakima"> Yakima</label></li>
+                <li><label><input type="checkbox" value="ford"> Ford</label></li>
+            </ul>
+        </div>
+
+        <button id="apply-filters" class="apply-btn">Apply Filters</button>
+    </aside>
+
+    <section id="category-grid" class="category-grid with-facets"></section>
 
     <template id="product-skeleton">
         <div class="product-card">

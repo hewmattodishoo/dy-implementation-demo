@@ -447,3 +447,21 @@
   width: 220px;
   border-color: #333;
 }
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: none;
+  z-index: 9999;
+  padding: 30px;
+}
+
+.search-overlay.show {
+  display: block;
+}
+
+.search-overlay-content {
+  max-width: 900px;
+  margin: 0 auto;
+}

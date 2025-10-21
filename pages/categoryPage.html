@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Cart – DY Demo Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/styles/styles.css" />
-
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+    <link rel="stylesheet" href="/styles/pages/home.css"> <!-- change per page -->
     <!-- Dynamic Yield page context -->
     <script>
         window.DY = window.DY || {};
@@ -20,41 +23,41 @@
 <header class="navbar">
     <div class="logo">DY Demo Store</div>
     <nav>
-      <a href="/cart">Cart</a>
-      <a href="/plp">Shop</a>
+        <a href="/cart">Cart</a>
+        <a href="/plp">Shop</a>
     </nav>
-  </header>
+</header>
 
 
 <body>
-   <section id="category-grid" class="category-grid"></section>
+    <section id="category-grid" class="category-grid"></section>
 
-<template id="product-skeleton">
-  <div class="product-card">
-    <div class="skeleton product-img"></div>
-    <div class="skeleton-text" style="width: 90%;"></div>
-    <div class="skeleton-text" style="width: 60%;"></div>
-    <div class="skeleton skeleton-btn"></div>
-  </div>
-</template>
+    <template id="product-skeleton">
+        <div class="product-card">
+            <div class="skeleton product-img"></div>
+            <div class="skeleton-text" style="width: 90%;"></div>
+            <div class="skeleton-text" style="width: 60%;"></div>
+            <div class="skeleton skeleton-btn"></div>
+        </div>
+    </template>
 
-<script>
-  const grid = document.getElementById("category-grid");
-  const template = document.getElementById("product-skeleton").innerHTML;
-  grid.innerHTML = template.repeat(25);
-</script>
+    <script>
+        const grid = document.getElementById("category-grid");
+        const template = document.getElementById("product-skeleton").innerHTML;
+        grid.innerHTML = template.repeat(25);
+    </script>
 </body>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2025 DY Demo Store. All rights reserved.</p>
-            <nav class="footer-nav">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Support</a>
-            </nav>
-        </div>
-    </footer>
+<footer class="footer">
+    <div class="footer-content">
+        <p>© 2025 DY Demo Store. All rights reserved.</p>
+        <nav class="footer-nav">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Support</a>
+        </nav>
+    </div>
+</footer>
 
 
 </body>

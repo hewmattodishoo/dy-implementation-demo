@@ -1,0 +1,37 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+/* Global variables */
+:root {
+  --color-primary: #007aff;
+  --color-primary-dark: #005fcc;
+  --color-text: #222;
+  --color-text-light: #555;
+  --radius: 12px;
+}
+
+/* Skeleton loader */
+.skeleton,
+.skeleton-text {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s infinite;
+}
+.skeleton {
+  border-radius: var(--radius);
+}
+.skeleton-text {
+  height: 18px;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

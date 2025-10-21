@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             },
             context: {
                 page: {
-                    type: "SEARCH",
+                    type: "HOMEPAGE",
                     data: [],
                     location: "https://dy-implementation-demo.vercel.app/",
                     locale: "none",

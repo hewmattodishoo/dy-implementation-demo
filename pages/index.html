@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DY Demo Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/responsive.css">
+  <link rel="stylesheet" href="/styles/pages/home.css">
 
   <!-- Dynamic Yield client-side tag -->
   <link rel="preconnect" href="//cdn.dynamicyield.com">
@@ -35,13 +39,13 @@
 
   <div id="search-backdrop" class="search-backdrop"></div>
   <div id="search-overlay" class="search-overlay">
-  <div class="search-overlay-content">
-    <button id="close-search">✕</button>
-    <input type="text" id="overlay-search-input" placeholder="Search products..." />
-    <div id="overlay-results"></div>
-    <div id="overlay-suggestions" class="suggestions-list"></div>
+    <div class="search-overlay-content">
+      <button id="close-search">✕</button>
+      <input type="text" id="overlay-search-input" placeholder="Search products..." />
+      <div id="overlay-results"></div>
+      <div id="overlay-suggestions" class="suggestions-list"></div>
+    </div>
   </div>
-</div>
 
   <!-- Hero section populated by API -->
   <section id="hero" class="hero">
@@ -90,4 +94,5 @@
   <script src="/js/searchQuery.js" defer></script>
 
 </body>
+
 </html>

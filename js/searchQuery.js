@@ -63,3 +63,16 @@ if (overlayInput) {
     }
   });
 }
+
+const backdrop = document.getElementById("search-backdrop");
+
+searchInput.addEventListener("focus", () => {
+  overlay.classList.add("show");
+  backdrop.classList.add("show");
+  overlayInput.focus();
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("show");
+  backdrop.classList.remove("show");
+});

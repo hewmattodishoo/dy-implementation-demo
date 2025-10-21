@@ -450,11 +450,20 @@
 
 .search-overlay {
   position: fixed;
-  inset: 0;
+  top: 80px; /* below navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  max-height: 600px;
   background: white;
-  display: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  padding: 24px;
   z-index: 9999;
-  padding: 30px;
+
+  display: none; /* hidden by default */
+  overflow-y: auto;
 }
 
 .search-overlay.show {
@@ -462,6 +471,17 @@
 }
 
 .search-overlay-content {
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+.search-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 9998;
+  display: none;
+}
+
+.search-backdrop.show {
+  display: block;
 }

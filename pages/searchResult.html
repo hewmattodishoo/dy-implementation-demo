@@ -48,13 +48,13 @@
     const data = JSON.parse(storedResults);
 
     // Extract product list (DY Semantic Search structure)
-    const products =
-      data?.choices?.[0]?.variations?.[0]?.payload?.data?.products || [];
+    const slots =
+      data?.choices?.[0]?.variations?.[0]?.payload?.data?.slots || [];
 
-    if (!products.length) {
+    if (!slots.length) {
       grid.innerHTML = "<p>No results found.</p>";
     } else {
-      grid.innerHTML = products
+      grid.innerHTML = slots
         .map(
           (p) => `
           <div class="product-card">

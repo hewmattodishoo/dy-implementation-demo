@@ -32,3 +32,8 @@
   height: 42px;
   border-radius: 6px;
 }
+
+#category-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}

@@ -53,6 +53,9 @@ function renderCategoryFacet(facet) {
       ${v.name} (${v.count})
     </label>
   `).join("");
+  document.querySelectorAll(".facet-category").forEach(cb =>
+    cb.addEventListener("change", applyFilters)
+  );
 }
 
 function renderBrandFacet(facet) {
@@ -63,6 +66,9 @@ function renderBrandFacet(facet) {
       ${v.name} (${v.count})
     </label>
   `).join("");
+  document.querySelectorAll(".facet-brand").forEach(cb =>
+    cb.addEventListener("change", applyFilters)
+  );
 }
 
 function renderPriceFacet(facet) {

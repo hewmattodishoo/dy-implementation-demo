@@ -50,7 +50,12 @@
         <!-- Price Filter -->
         <div class="facet">
             <h4>Price</h4>
-            <div id="facet-price"></div>
+            <div id="facet-price" class="price-slider-container">
+                <input type="range" id="price-slider" />
+                <div class="price-label">
+                    Price ≥ €<span id="price-value"></span>
+                </div>
+            </div>
         </div>
 
         <!-- Brand Filter -->
@@ -59,7 +64,7 @@
             <ul id="facet-brand"></ul>
         </div>
 
-        <button id="apply-filters" class="apply-btn">Apply Filters</button>
+        
     </aside>
 
     <section id="category-grid" class="category-grid with-facets"></section>

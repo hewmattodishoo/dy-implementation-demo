@@ -44,30 +44,19 @@
         <!-- Category Filter -->
         <div class="facet">
             <h4>Category</h4>
-            <ul>
-                <li><label><input type="checkbox" value="bike"> Bike</label></li>
-                <li><label><input type="checkbox" value="travel"> Travel</label></li>
-                <li><label><input type="checkbox" value="accessories"> Accessories</label></li>
-            </ul>
+            <ul id="facet-category"></ul>
         </div>
 
         <!-- Price Filter -->
         <div class="facet">
             <h4>Price</h4>
-            <div class="price-inputs">
-                <input type="number" id="min-price" placeholder="Min" />
-                <input type="number" id="max-price" placeholder="Max" />
-            </div>
+            <div id="facet-price"></div>
         </div>
 
         <!-- Brand Filter -->
         <div class="facet">
             <h4>Brand</h4>
-            <ul>
-                <li><label><input type="checkbox" value="thule"> Thule</label></li>
-                <li><label><input type="checkbox" value="yakima"> Yakima</label></li>
-                <li><label><input type="checkbox" value="ford"> Ford</label></li>
-            </ul>
+            <ul id="facet-brand"></ul>
         </div>
 
         <button id="apply-filters" class="apply-btn">Apply Filters</button>

@@ -2,61 +2,95 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DY Demo Store</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="/styles/styles.css">
-   <link rel="stylesheet" href="/styles/searchDemoPageStyles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DY Demo Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/searchDemoPageStyles.css">
 
-  <!-- Dynamic Yield client-side tag -->
-  <link rel="preconnect" href="//cdn.dynamicyield.com">
-  <link rel="preconnect" href="//st.dynamicyield.com">
-  <link rel="preconnect" href="//rcom.dynamicyield.com">
-  <script type="text/javascript">
-    window.DY = window.DY || {};
-    DY.recommendationContext = { type: 'SEARCH' };
-  </script>
-  <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
-  <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
+    <!-- Dynamic Yield client-side tag -->
+    <link rel="preconnect" href="//cdn.dynamicyield.com">
+    <link rel="preconnect" href="//st.dynamicyield.com">
+    <link rel="preconnect" href="//rcom.dynamicyield.com">
+    <script type="text/javascript">
+        window.DY = window.DY || {};
+        DY.recommendationContext = { type: 'SEARCH' };
+    </script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_dynamic.js"></script>
+    <script src="//cdn.dynamicyield.com/api/8793565/api_static.js"></script>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="logo">DY Demo Store</div>
-    <nav>
-      <a href="/pages/cart.html">Cart</a>
-      <a href="/pages/categoryPage.html">Shop</a>
-    </nav>
-  </header>
+    <header class="navbar">
+        <div class="logo">DY Demo Store</div>
+        <nav>
+            <a href="/pages/cart.html">Cart</a>
+            <a href="/pages/categoryPage.html">Shop</a>
+        </nav>
+    </header>
 
-  <!-- ✅ Centered Prompt Search Box -->
-  <main class="dy-search-page">
-  <div class="dy-search-box">
-    <h2 class="dy-search-title">What are you looking for?</h2>
+    <!-- ✅ Centered Prompt Search Box -->
+    <main class="dy-search-page">
+        <div class="dy-search-box">
+            <h2 class="dy-search-title">What are you looking for?</h2>
 
-    <div class="dy-search-input-wrapper">
-      <i class="fa fa-search dy-search-icon"></i>
-      <input id="search-input" class="dy-search-input" type="text" placeholder="Search products..." autocomplete="off" />
-      <div id="autocomplete" class="dy-autocomplete-list"></div>
-    </div>
+            <div class="dy-search-input-wrapper">
+                <i class="fa fa-search dy-search-icon"></i>
+                <input id="search-input" class="dy-search-input" type="text" placeholder="Search products..."
+                    autocomplete="off" />
+                <div id="autocomplete" class="dy-autocomplete-list"></div>
+            </div>
 
-  </div>
-</main>
+            <div class="search-autocomplete-box">
+                <div class="autocomplete-suggestions">
+                    <h3>Popular Searches</h3>
+                    <ul>
+                        <li>Bike Rack</li>
+                        <li>Roof Box</li>
+                        <li>Stroller</li>
+                    </ul>
+                </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <p>© 2025 DY Demo Store. All rights reserved.</p>
-      <nav class="footer-nav">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Support</a>
-      </nav>
-    </div>
-  </footer>
+                <div class="product-suggestions">
+                    <h3>Popular Products</h3>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <img src="/images/p1.jpg">
+                            <div class="name">Thule EasyFold XT</div>
+                            <div class="price">$749.00</div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/images/p2.jpg">
+                            <div class="name">Thule Force XT L</div>
+                            <div class="price">$599.00</div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/images/p3.jpg">
+                            <div class="name">Varta Laddningsbara</div>
+                            <div class="price">$149.90</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <script src="/js/index.js" defer></script>
-  <script src="/js/searchQuery.js" defer></script>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 DY Demo Store. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/js/index.js" defer></script>
+    <script src="/js/searchQuery.js" defer></script>
 
 </body>
+
 </html>

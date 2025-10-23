@@ -7,6 +7,7 @@
 
 .dy-search-box {
   text-align: center;
+
 }
 
 .dy-search-title {
@@ -60,4 +61,80 @@
   background: transparent !important;
   width: 100%;
   font-size: 16px;
+}
+
+/* --- Search Suggestions --- */
+.search-autocomplete-box {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+  margin: 10px auto 0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.dy-search-input-wrapper:focus-within + .search-autocomplete-box {
+  display: grid;
+}
+
+.autocomplete-suggestions h3,
+.product-suggestions h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.autocomplete-suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autocomplete-suggestions li {
+  margin-bottom: 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.autocomplete-suggestions li:hover {
+  text-decoration: underline;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.product-card .name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.product-card .price {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 8px;
 }

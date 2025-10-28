@@ -1,5 +1,5 @@
 // elements
-const searchInput = document.getElementById("search-input");
+const searchInput = document.getElementById("dy-search-input");
 
 
 // call server-side when at least three characters has been entered

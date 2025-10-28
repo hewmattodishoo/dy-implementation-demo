@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
     console.log("Incoming /api/suggest request...");
 
-    const apiKey = process.env.DY_API_KEY_CLIENT;
+    const apiKey = process.env.DY_API_KEY;
     if (!apiKey) {
         return res.status(500).json({ error: "Missing DY_API_KEY in environment." });
     }
